@@ -4,7 +4,8 @@ import SwiftUI
 public struct CustomLoadingView: View {
     
     @State private var animate: Bool = false
-    let secondaryAccentColor = Color("SecondaryAccentColor")
+    let primaryAccentColor = Color("AccentColor", bundle: Bundle.main)
+    let secondaryAccentColor = Color("SecondaryAccentColor", bundle: Bundle.module)
     
     public init() {}
     
@@ -16,11 +17,11 @@ public struct CustomLoadingView: View {
                 .bold()
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
-                .background(animate ? secondaryAccentColor : Color.accentColor)
+                .background(animate ? secondaryAccentColor : primaryAccentColor)
                 .cornerRadius(10)
                 .padding(.horizontal, animate ? 30 : 50)
                 .shadow(
-                    color: animate ? secondaryAccentColor.opacity(0.7) : Color.accentColor.opacity(0.7),
+                    color: animate ? secondaryAccentColor.opacity(0.7) : primaryAccentColor.opacity(0.7),
                     radius: animate ? 30 : 10,
                     x: 0,
                     y: animate ? 50 : 30)

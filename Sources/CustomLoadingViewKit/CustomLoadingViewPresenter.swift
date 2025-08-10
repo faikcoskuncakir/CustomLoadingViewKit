@@ -9,19 +9,15 @@ import SwiftUI
 import UIKit
 
 public enum CustomLoadingViewPresenter {
-    // main actor ile izole edilmiş statik window
     @MainActor private static var window: UIWindow?
 
-    // start/stop'u main actor içinde çalıştırıyoruz
     public static func start() {
         Task { @MainActor in
-            // zaten açıksa tekrar açma
             guard window == nil else { return }
 
             let hosting = UIHostingController(rootView: CustomLoadingView())
             hosting.view.backgroundColor = .clear
 
-            // iOS 13+ scene uyumlu pencere oluşturma
             let newWindow: UIWindow
             if let scene = UIApplication.shared.connectedScenes
                         .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
