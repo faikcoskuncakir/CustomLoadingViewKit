@@ -4,7 +4,7 @@ import SwiftUI
 public struct CustomLoadingView: View {
     
     @State private var animate: Bool = false
-    let primaryAccentColor = Color("AccentColor", bundle: Bundle.main)
+    let primaryAccentColor = Color("AccentColor", bundle: Bundle.module)
     let secondaryAccentColor = Color("SecondaryAccentColor", bundle: Bundle.module)
     
     public init() {}
